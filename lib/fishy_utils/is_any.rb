@@ -1,11 +1,17 @@
+# frozen_string_literal: true
+
 module FishyUtils
+  # Extend all Objects with an +is_any?+ predicate.  This is the equivalent of
+  # +is_a?+, but accepts a list of potential classes.
   module IsAny
     extend ActiveSupport::Concern
 
-    def is_any?( *klasses )              # Using the splat and flatten allows this to accept
-      klasses.flatten.any? do |klass|    # both comma separated params as well as an Array.
-        is_a?( klass )
+    # rubocop:disable Naming::PredicateName
+    def is_any?(*klasses)
+      klasses.flatten.any? do |klass|
+        is_a?(klass)
       end
     end
+    # rubocop:enable Naming::PredicateName
   end
 end

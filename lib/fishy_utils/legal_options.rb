@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 module FishyUtils
   module Errors
@@ -15,6 +16,8 @@ module FishyUtils
     end
   end
 
+  # Extends all Objects with an instance and class method for checking the validity of
+  # an +options+ +Hash+.
   module LegalOptions
     extend ActiveSupport::Concern
 
