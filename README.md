@@ -1,10 +1,11 @@
 # FishyUtils
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/fishy_utils`. To experiment with that code, run `bin/console` for an interactive prompt.
+A set of small simple method APIs that extend objects with a few useful features.
 
-TODO: Delete this and the text above, and describe your gem
-
+As a rule gems with a random feature set are a bad idea, but so are gem for a single method.  The APIs in this gem will be kept to simple single methods.  Any more complex APIs will be placed in seperate gems.
 ## Installation
+
+> NOTE:  The gem has not been publish as yet, so to use it directly reference the `github.com` repository and latest tag in your `Gemfile`. For example `gem 'fishy_utils', git: 'https://github.com/drewthorp/fishy_utils.git', tag: '0.1.1'`.
 
 Add this line to your application's Gemfile:
 
@@ -22,7 +23,31 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Currently this gem provbides two additional APIs on all `Object`s.
+
+### `is_any?`
+
+Like `is_a?` checks that the object is of a certain class, but accepts a list if classes and returns `true` if the object is any of those classes.
+
+For example:-
+
+```ruby
+foo.is_any?(String, Array)
+```
+
+### `legal_options?`
+
+Raises an error if the given `options` has contains key not inclused in te legals keys array.
+
+For example :-
+
+```ruby
+def foo(**options)
+  legal_options?(%i[klass name], options)
+end
+```
+
+> NOTE: The intention is to extend this to also check inclusive and exclusive groups.
 
 ## Development
 
